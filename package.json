@@ -1,6 +1,12 @@
 {
   "name": "ember-qr-kitchen",
+  "version": "1.0.0",
   "description": "EMBER QR Kitchen - Restaurant ordering and management system",
+  "author": "786iamrehankhan",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/786iamrehankhan-sudo/EMBER.git"
+  },
   "private": true,
   "sideEffects": false,
   "type": "module",
