@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
@@ -66,7 +66,12 @@ function Kitchen() {
           <span className="font-display text-xl tracking-[0.35em] text-ember">EMBER</span>
           <h1 className="text-3xl">Kitchen</h1>
         </div>
-        <Button variant="glass" onClick={signOut}>Sign out</Button>
+        <div className="flex gap-3">
+          <Link to="/staff-management">
+            <Button variant="outline">Staff Management</Button>
+          </Link>
+          <Button variant="glass" onClick={signOut}>Sign out</Button>
+        </div>
       </header>
       {isStaff === false && (
         <p className="mt-4 rounded-xl border border-destructive/40 bg-destructive/10 p-3 text-sm">
