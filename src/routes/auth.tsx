@@ -28,13 +28,25 @@ function AuthPage() {
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
     setBusy(true);
+    // Get the current origin for proper redirects
+    const redirectUrl = `${window.location.origin}/kitchen`;
+    
     if (mode === "in") {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
       setBusy(false);
       if (error) { toast.error(error.message); return; }
       navigate({ to: "/kitchen" });
     } else {
-      const { error } = await supabase.auth.signUp({ email, password, options: { emailRedirectTo: `${window.location.origin}/kitchen` } });
+      const { error } = await supabase.auth.signUp({ 
+        email, 
+        password, 
+        options: { 
+          emailRedirectTo: redirectUrl,
+          data: {
+            redirect_to: redirectUrl
+          }
+        } 
+      });
       setBusy(false);
       if (error) { toast.error(error.message); return; }
       toast.success("Check your email to confirm your account.");
